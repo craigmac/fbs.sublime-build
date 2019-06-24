@@ -1,0 +1,60 @@
+{
+    /* Runs 'fbs run' by default although the command will just
+     * show 'fbs'. Use (Windows) Ctrl-Shift-B to bring up
+     * build command palette to see other 'fbs ...' command
+     * options you can run from Sublime Text 3.
+
+     * The build process uses bash interpreter on osx/linux,
+     * and cmd.exe on Windows.
+    */ 
+
+    "shell_cmd": "fbs run",
+    "file_regex": "^\\s*File \"(...*?)\", line ([0-9]*)",
+    "working_dir": "${project_path:${folder}}",
+    "selector": "source.python",
+
+    /* Here is where you may need to manually alter the path to
+     * the folder than contains the 'fbs' executable. Unfortunately
+     * ST3 doesn't allow project build settings to inherit from a
+     * global build settings file, therefore we must hardcode
+     * the environment we want to use with the fbs tooling here.
+     */
+    "windows": {
+        "env": {
+            "path": "C:/Users/cmaceachern/virtualenvs/pyside2/Scripts",
+        },
+    },
+    "osx": {},
+    "linux": {},
+
+    /* Non-interactive fbs ____ commands that can be run from inside
+     * Sublime Text, for other commands you'll need to use the
+     * command line directly, e.g., 'fbs startproject' as they require
+     * user interaction.
+     */
+    "variants": 
+    [
+        {
+            "name": "clean",
+            "shell_cmd": "fbs clean"
+        },
+        {
+            "name": "freeze",
+            "shell_cmd": "fbs freeze"
+        },
+        {
+            "name": "installer",
+            "shell_cmd": "fbs installer"
+        },
+        {
+            "name": "release",
+            "shell_cmd": "fbs release"
+        },
+        {
+            "name": "test",
+            "shell_cmd": "fbs test"
+        },
+
+    ]
+    
+}
